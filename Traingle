@@ -1,0 +1,62 @@
+public class Triangle {
+    private int s1, s2, s3;
+
+    public Triangle() {
+        this.s1 = 3;
+        this.s2 = 4;
+        this.s3 = 5;
+    }
+
+        if (isValid(side1, side2, side3)) {
+            this.s1 = s1;
+            this.s2 = s2;
+            this.s3 = s3;
+        } else {
+            throw new IllegalArgumentException("Invalid triangle sides");
+        }
+    }
+
+    public static boolean isValid(int s1, int s2, int s3) {
+        return (s1 + s2 > s3) && (s1 + s3> s2) && (s2 + s3 > s1);
+    }
+
+    public boolean isRight() {
+        int[] sides = {s1, s2, s3};
+        java.util.Arrays.sort(sides); 
+        return s[0] * s[0] + s[1] * s[1] == s[2] * s[2];
+    }
+
+    public boolean isIsosceles() {
+        return (s1 == s2 || s1 == s3 || s2 == s3);
+    }
+
+    public boolean isEquilateral() {
+        return (s1 == s2 && s2 == s3);
+    }
+
+    
+    public double getPerimeter() {
+        return s1 + s2 + s3;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + s1 + "," + s2 + "," + s3 + ")";
+    }
+
+   
+    public static void main(String[] args) {
+        Triangle triangle = new Triangle();
+        System.out.println("Triangle: " + triangle);
+        System.out.println("Perimeter: " + triangle.getPerimeter());
+        System.out.println("Is Right Triangle: " + triangle.isRight());
+        System.out.println("Is Isosceles: " + triangle.isIsosceles());
+        System.out.println("Is Equilateral: " + triangle.isEquilateral());
+        
+        try {
+            Triangle invalidTriangle = new Triangle(1, 2, 10);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
